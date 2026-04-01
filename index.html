@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Implementation Demo</title>
+    
+    <script src="https://cdn.amplitude.com/script/YOUR_AMPLITUDE_API_KEY.js"></script>
+    <script>
+        window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+        window.amplitude.init('2be8b7adedd3a92e3ab4bdfe35500879', {
+            "autocapture": {
+                "pageViews": true,
+                "sessions": true,
+                "formInteractions": true
+            }
+        });
+    </script>
+
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f4f7f6; }
+        .container { text-align: center; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .btn { padding: 15px 25px; margin: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        #signup-btn { background-color: #24b47e; color: white; }
+        #demo-btn { background-color: #007bff; color: white; }
+        .btn:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to the Product Analytics Demo</h1>
+        <p>Select an option below to test the event tracking.</p>
+        
+        <button id="signup-btn" class="btn">Sign Up</button>
+        <button id="demo-btn" class="btn">Request Demo</button>
+    </div>
+
+    <script>
+        // Step 3: Event Tracking Logic
+        document.getElementById('signup-btn').addEventListener('click', function() {
+            amplitude.track('Clicked Sign Up', { 'location': 'hero_section' });
+            alert('Sign Up Event Tracked!');
+        });
+
+        document.getElementById('demo-btn').addEventListener('click', function() {
+            amplitude.track('Clicked Request Demo', { 'location': 'hero_section' });
+            alert('Request Demo Event Tracked!');
+        });
+    </script>
+
+</body>
+</html>
